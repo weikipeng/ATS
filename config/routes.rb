@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/help', to: "static_pages#help" ,as: 'helf'
+  get '/help', to: "static_pages#help"
 
   get '/about', to: "static_pages#about"
 
