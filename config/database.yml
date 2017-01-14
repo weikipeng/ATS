@@ -21,26 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-#  <<: *default
-#  database: db/production.sqlite3
+  <<: *default
+  database: ats
   adapter: postgresql
   encoding: unicode
-  database: ats
-  pool: 5
-  username: postgres
-  password: postgres_admin
   host: db
-
-
-#development: &default
-#  adapter: postgresql
-#  encoding: unicode
-#  database: ats_development
-#  pool: 5
-#  username: postgres
-#  password:
-#  host: db
-#
-#test:
-#  <<: *default
-#  database: ats_test
+  port: 5432
+  username: postgres
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
