@@ -13,6 +13,17 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  # 激活账户
+  def activate
+    update_attribute(:activated,    true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  # 发送激活邮件
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
   class << self
     # 返回指定字符串的哈希摘要
     def digest(string)
